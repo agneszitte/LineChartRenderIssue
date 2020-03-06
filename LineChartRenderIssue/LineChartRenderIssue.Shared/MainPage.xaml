@@ -1,0 +1,47 @@
+﻿<Page x:Class="LineChartRenderIssue.MainPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="using:LineChartRenderIssue"
+	  xmlns:shared="using:LineChartRenderIssue.Shared"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:xamarin="http:/uno.ui/xamarin"
+	  mc:Ignorable="d xamarin">
+
+	<Grid Background="LightBlue">
+		<Border Background="Orange"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center">
+			<shared:LineChart x:Name="TestLineChart"
+							  Width="250"
+							  Height="250"
+							  ItemSource="{Binding Data}"
+							  Background="Yellow">
+				<shared:LineChart.Style>
+					<Style TargetType="controls:LineChart">
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="controls:LineChart">
+									<Grid x:Name="RootBorder"
+										  Background="DeepPink"
+										  BorderBrush="{TemplateBinding BorderBrush}"
+										  BorderThickness="{TemplateBinding BorderThickness}">
+
+										<ContentPresenter x:Name="Presenter"
+														  Padding="{TemplateBinding Padding}"
+														  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+														  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+														  AutomationProperties.AccessibilityView="Raw"
+														  Content="{TemplateBinding Content}"
+														  ContentTemplate="{TemplateBinding ContentTemplate}"
+														  ContentTransitions="{TemplateBinding ContentTransitions}" />
+									</Grid>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</shared:LineChart.Style>
+			</shared:LineChart>
+		</Border>
+	</Grid>
+</Page>
